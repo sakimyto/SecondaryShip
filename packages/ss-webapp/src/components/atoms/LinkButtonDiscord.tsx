@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { FaDiscord } from 'react-icons/fa';
 import projectConfig from '@/config/projectConfig';
 
-const ButtonLinkDiscord: NextPage = () => {
+const LinkButtonDiscord: NextPage = () => {
   return (
     <a
       href={projectConfig.discordUrl}
@@ -16,4 +16,4 @@ const ButtonLinkDiscord: NextPage = () => {
   );
 };
 
-export default ButtonLinkDiscord;
+export default LinkButtonDiscord;

@@ -12,7 +12,7 @@ const MyHead: NextPage = () => (
     <link key='ga-prefetch' rel='preconnect dns-prefetch' href='https://www.google-analytics.com' />
     <link key='canonical' rel='canonical' href={projectConfig.siteUrl} />
 
-    <meta key='theme-color' name='theme-color' content='#252525' />
+    <meta key='theme-color' name='theme-color' content='#0f172a' />
     <meta key='description' name='description' content={projectConfig.siteDescription} />
     <meta key='keywords' name='keywords' content='web3,crypto,blockchain' />
 
@@ -37,9 +37,9 @@ const MyHead: NextPage = () => (
     <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />
     <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
     <link rel='manifest' href='/favicon/site.webmanifest' />
-    <link rel='mask-icon' href='/favicon/safari-pinned-tab.svg' color='#252525' />
-    <meta name='msapplication-TileColor' content='#252525' />
-    <meta name='theme-color' content='#ffffff' />
+    <link rel='mask-icon' href='/favicon/safari-pinned-tab.svg' color='#0f172a' />
+    <meta name='msapplication-TileColor' content='#0f172a' />
+    <meta name='theme-color' content='#0f172a' />
 
     <meta
       key='apple-mobile-web-app-title'
@@ -47,7 +47,7 @@ const MyHead: NextPage = () => (
       content={projectConfig.siteName}
     />
     <meta key='application-name' name='application-name' content={projectConfig.siteName} />
-    <meta key='msapplication-TileColor' name='msapplication-TileColor' content='#252525' />
+    <meta key='msapplication-TileColor' name='msapplication-TileColor' content='#0f172a' />
   </Head>
 );
 

@@ -1,6 +1,6 @@
-import { existsGaId, GA_ID } from '@/utils/gtag';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { existsGaId, GA_ID } from '@/utils/gtag';
 
 export const pageview = (path: string) => {
   window.gtag('config', GA_ID, {

@@ -3,8 +3,8 @@ import React from 'react';
 
 import LayoutType from '@/@types/layout';
 import Footer from '@/components/atoms/Footer';
-import Header from '@/components/atoms/Header';
 import Main from '@/components/atoms/Main';
+import Header from '@/components/organisms/Header';
 
 const Layout: NextPage<LayoutType> = ({ children }) => (
   <>

@@ -1,9 +1,5 @@
 import { NextPage } from 'next';
 
-import LinkButtonDiscord from '@/components/atoms/LinkButtonDiscord';
-import LinkButtonGithub from '@/components/atoms/LinkButtonGithub';
-import LinkButtonTwitter from '@/components/atoms/LinkButtonTwitter';
-
 import Section from '@/components/atoms/Section';
 import MyHead from '@/components/molecules/MyHead';
 import Layout from '@/components/templates/Layout';

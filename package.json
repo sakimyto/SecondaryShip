@@ -5,6 +5,6 @@
     "ncu:upgrade": "ncu --deep -u -p npm"
   },
   "devDependencies": {
-    "npm-check-updates": "^13.0.3"
+    "npm-check-updates": "^13.0.4"
   }
 }

@@ -1,43 +1,58 @@
-import * as dotenv from "dotenv";
+/* eslint-disable dot-notation */
+import 'dotenv/config'
+import '@nomiclabs/hardhat-waffle'
+import type { HardhatUserConfig } from 'hardhat/config'
+import '@typechain/hardhat'
+import '@nomiclabs/hardhat-etherscan'
+import 'hardhat-gas-reporter'
 
-import { HardhatUserConfig, task } from "hardhat/config";
-import "@nomiclabs/hardhat-etherscan";
-import "@nomiclabs/hardhat-waffle";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
+import '@nomiclabs/hardhat-ethers'
 
-dotenv.config();
+import { getEnvVariable } from './scripts/helpers'
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
-
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-const config: HardhatUserConfig = {
-  solidity: "0.8.4",
-  networks: {
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+/**
+ * @type HardhatUserConfig
+ */
+const settings: HardhatUserConfig = {
+  defaultNetwork: 'localhost',
+  solidity: {
+    version: '0.8.9',
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+  etherscan: {
+    apiKey: {
+      polygon: process.env['POLYGON_API'] || '',
+      polygonMumbai: process.env['POLYGON_MUMBAI_API'] || '',
     },
   },
   gasReporter: {
-    enabled: process.env.REPORT_GAS !== undefined,
-    currency: "USD",
+    enabled: true,
   },
-  etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+  networks: {
+    localhost: {
+      url: 'http://localhost:8545',
+      chainId: 31337,
+      accounts: {
+        mnemonic: 'test test test test test test test test test test test junk',
+      },
+    },
+    polygon: {
+      url: process.env.POLYGON_API,
+      accounts: [getEnvVariable('ACCOUNT_PRIVATE_KEY')],
+    },
+    mumbai: {
+      url: process.env.POLYGON_MUMBAI_API,
+      accounts: [getEnvVariable('ACCOUNT_PRIVATE_KEY')],
+    },
   },
-};
+  mocha: {
+    timeout: 60_000,
+  },
+}
 
-export default config;
+export default settings

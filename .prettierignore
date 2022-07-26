@@ -1,0 +1,5 @@
+node_modules
+ss-contract/artifacts
+ss-contract/cache
+ss-contract/typechain-types
+ss-contract/node_modules

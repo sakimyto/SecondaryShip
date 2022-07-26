@@ -11,103 +11,105 @@ import type {
   PopulatedTransaction,
   Signer,
   utils,
-} from "ethers";
-import type { FunctionFragment, Result } from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
+} from 'ethers'
+import type { FunctionFragment, Result } from '@ethersproject/abi'
+import type { Listener, Provider } from '@ethersproject/providers'
 import type {
   TypedEventFilter,
   TypedEvent,
   TypedListener,
   OnEvent,
-} from "./common";
+  PromiseOrValue,
+} from './common'
 
 export interface GreeterInterface extends utils.Interface {
   functions: {
-    "greet()": FunctionFragment;
-    "setGreeting(string)": FunctionFragment;
-  };
+    'greet()': FunctionFragment
+    'setGreeting(string)': FunctionFragment
+  }
 
-  getFunction(
-    nameOrSignatureOrTopic: "greet" | "setGreeting"
-  ): FunctionFragment;
+  getFunction(nameOrSignatureOrTopic: 'greet' | 'setGreeting'): FunctionFragment
 
-  encodeFunctionData(functionFragment: "greet", values?: undefined): string;
-  encodeFunctionData(functionFragment: "setGreeting", values: [string]): string;
+  encodeFunctionData(functionFragment: 'greet', values?: undefined): string
+  encodeFunctionData(
+    functionFragment: 'setGreeting',
+    values: [PromiseOrValue<string>]
+  ): string
 
-  decodeFunctionResult(functionFragment: "greet", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setGreeting",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'greet', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setGreeting', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export interface Greeter extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
-  interface: GreeterInterface;
+  interface: GreeterInterface
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TEvent>>;
+  ): Promise<Array<TEvent>>
 
   listeners<TEvent extends TypedEvent>(
     eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
-  listeners(eventName?: string): Array<Listener>;
+  ): Array<TypedListener<TEvent>>
+  listeners(eventName?: string): Array<Listener>
   removeAllListeners<TEvent extends TypedEvent>(
     eventFilter: TypedEventFilter<TEvent>
-  ): this;
-  removeAllListeners(eventName?: string): this;
-  off: OnEvent<this>;
-  on: OnEvent<this>;
-  once: OnEvent<this>;
-  removeListener: OnEvent<this>;
+  ): this
+  removeAllListeners(eventName?: string): this
+  off: OnEvent<this>
+  on: OnEvent<this>
+  once: OnEvent<this>
+  removeListener: OnEvent<this>
 
   functions: {
-    greet(overrides?: CallOverrides): Promise<[string]>;
+    greet(overrides?: CallOverrides): Promise<[string]>
 
     setGreeting(
-      _greeting: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+      _greeting: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>
+  }
 
-  greet(overrides?: CallOverrides): Promise<string>;
+  greet(overrides?: CallOverrides): Promise<string>
 
   setGreeting(
-    _greeting: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    _greeting: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>
 
   callStatic: {
-    greet(overrides?: CallOverrides): Promise<string>;
+    greet(overrides?: CallOverrides): Promise<string>
 
-    setGreeting(_greeting: string, overrides?: CallOverrides): Promise<void>;
-  };
+    setGreeting(
+      _greeting: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
-    greet(overrides?: CallOverrides): Promise<BigNumber>;
+    greet(overrides?: CallOverrides): Promise<BigNumber>
 
     setGreeting(
-      _greeting: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+      _greeting: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    greet(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    greet(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setGreeting(
-      _greeting: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+      _greeting: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>
+  }
 }
